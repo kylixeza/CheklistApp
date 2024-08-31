@@ -22,7 +22,6 @@ class ChecklistItemViewModel(
                 val response = checklistItemApiService.getAllItems(checklistId)
                 if (response.data != null) {
                     _checklistItems.value = response.data
-                    Log.d("ChecklistItemViewModel", "getChecklistItems: ${response.data}")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -33,10 +32,8 @@ class ChecklistItemViewModel(
     fun deleteItem(checklistId: Int, itemId: Int) {
         viewModelScope.launch {
             try {
-                val response = checklistItemApiService.deleteItem(checklistId, itemId)
-                if (response.data != null) {
-                    getChecklistItems(checklistId)
-                }
+                checklistItemApiService.deleteItem(checklistId, itemId)
+                getChecklistItems(checklistId)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
