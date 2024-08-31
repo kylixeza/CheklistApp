@@ -1,5 +1,6 @@
 package com.kylix.checklistapp.screens.checklist_item.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,14 +33,16 @@ fun ChecklistItemItem(
     modifier: Modifier = Modifier,
     item: ChecklistItemResponse,
     onDelete: (Int) -> Unit = {},
-    onUpdateStatus : (Int) -> Unit = {}
+    onUpdateStatus : (Int) -> Unit = {},
+    onSelectChecklistItem: (Int) -> Unit = {}
 ) {
 
     Surface(
         modifier = modifier
             .padding(horizontal = 24.dp, vertical = 6.dp)
             .fillMaxWidth()
-            .shadow(2.dp, RoundedCornerShape(8.dp)),
+            .shadow(2.dp, RoundedCornerShape(8.dp))
+            .clickable { onSelectChecklistItem(item.id) },
         color = Color.White
     ) {
         Row(

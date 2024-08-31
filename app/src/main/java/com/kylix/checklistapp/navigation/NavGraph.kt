@@ -12,6 +12,7 @@ import com.kylix.checklistapp.screens.auth.login.LoginScreen
 import com.kylix.checklistapp.screens.auth.register.RegisterScreen
 import com.kylix.checklistapp.screens.checklist.ChecklistScreen
 import com.kylix.checklistapp.screens.checklist_item.ChecklistItemScreen
+import com.kylix.checklistapp.screens.checklist_item.detail.DetailChecklistItemScreen
 
 @Composable
 fun NavGraph() {
@@ -69,6 +70,9 @@ fun NavGraph() {
                 checklistId = checklistId,
                 onAddChecklistItem = {
                     navController.navigate(ScreenNavigation.AddChecklistItem.passChecklistId(checklistId))
+                },
+                onSelectChecklistItem = {
+                    navController.navigate(ScreenNavigation.DetailChecklistItem.passChecklistId(checklistId, it))
                 }
             )
         }
@@ -80,6 +84,24 @@ fun NavGraph() {
             val checklistId = it.arguments?.getInt(ARG_CHECKLIST_ID) ?: 0
             AddChecklistItemScreen(
                 checklistId = checklistId,
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            ScreenNavigation.DetailChecklistItem.route,
+            arguments = listOf(
+                navArgument(ARG_CHECKLIST_ID) { type = NavType.IntType },
+                navArgument(ARG_CHECKLIST_ITEM_ID) { type = NavType.IntType }
+            )
+        ) {
+            val checklistId = it.arguments?.getInt(ARG_CHECKLIST_ID) ?: 0
+            val itemId = it.arguments?.getInt(ARG_CHECKLIST_ITEM_ID) ?: 0
+            DetailChecklistItemScreen(
+                checklistId = checklistId,
+                itemId = itemId,
                 onBack = {
                     navController.popBackStack()
                 }
