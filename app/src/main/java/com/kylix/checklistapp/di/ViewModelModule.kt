@@ -7,6 +7,7 @@ import com.kylix.checklistapp.screens.auth.register.RegisterViewModel
 import com.kylix.checklistapp.screens.checklist.ChecklistViewModel
 import com.kylix.checklistapp.screens.checklist_item.ChecklistItemViewModel
 import com.kylix.checklistapp.screens.checklist_item.detail.DetailChecklistItemViewModel
+import com.kylix.checklistapp.screens.checklist_item.edit.EditChecklistItemViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,4 +19,5 @@ val viewModelModule = module {
     viewModel { ChecklistItemViewModel(get()) }
     viewModel { AddChecklistItemViewModel(get()) }
     viewModel { DetailChecklistItemViewModel(get()) }
+    viewModel { EditChecklistItemViewModel(get()) }
 }

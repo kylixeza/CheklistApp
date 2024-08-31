@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,7 +35,8 @@ fun ChecklistItemItem(
     item: ChecklistItemResponse,
     onDelete: (Int) -> Unit = {},
     onUpdateStatus : (Int) -> Unit = {},
-    onSelectChecklistItem: (Int) -> Unit = {}
+    onSelectChecklistItem: (Int) -> Unit = {},
+    onEditChecklistItem: (Int) -> Unit = {},
 ) {
 
     Surface(
@@ -85,6 +87,18 @@ fun ChecklistItemItem(
                             tint = DeepBlue
                         )
                     }
+                }
+
+                IconButton(
+                    onClick = {
+                        onEditChecklistItem(item.id)
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Create,
+                        contentDescription = "Edit",
+                        tint = DeepOrange
+                    )
                 }
 
                 IconButton(

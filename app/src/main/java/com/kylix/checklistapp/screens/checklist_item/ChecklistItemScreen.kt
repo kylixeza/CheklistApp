@@ -43,7 +43,8 @@ fun ChecklistItemScreen(
     checklistId: Int,
     viewModel: ChecklistItemViewModel = koinViewModel(),
     onAddChecklistItem: () -> Unit = {},
-    onSelectChecklistItem: (Int) -> Unit = {}
+    onSelectChecklistItem: (Int) -> Unit = {},
+    onEditChecklistItem: (Int) -> Unit = {}
 ) {
 
     val checklistItems by viewModel.checklistItems.collectAsState()
@@ -109,7 +110,8 @@ fun ChecklistItemScreen(
                         item = it,
                         onDelete = { id -> viewModel.deleteItem(checklistId, id) },
                         onUpdateStatus = { id -> viewModel.updateItemStatus(checklistId, id) },
-                        onSelectChecklistItem = { id -> onSelectChecklistItem(id) }
+                        onSelectChecklistItem = { id -> onSelectChecklistItem(id) },
+                        onEditChecklistItem = { id -> onEditChecklistItem(id) }
                     )
                 }
             }

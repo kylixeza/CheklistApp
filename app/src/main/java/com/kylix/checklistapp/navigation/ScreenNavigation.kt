@@ -27,4 +27,11 @@ sealed class ScreenNavigation(val route: String = "") {
                 .replace("{$ARG_CHECKLIST_ITEM_ID}", itemId.toString())
         }
     }
+
+    data object EditChecklistItem: ScreenNavigation("/edit-checklist-item/{$ARG_CHECKLIST_ID}/item/{$ARG_CHECKLIST_ITEM_ID}") {
+        fun passChecklistId(checklistId: Int, itemId: Int): String {
+            return this.route.replace("{$ARG_CHECKLIST_ID}", checklistId.toString())
+                .replace("{$ARG_CHECKLIST_ITEM_ID}", itemId.toString())
+        }
+    }
 }

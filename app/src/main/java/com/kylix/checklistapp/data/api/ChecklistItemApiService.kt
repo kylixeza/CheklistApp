@@ -29,5 +29,5 @@ interface ChecklistItemApiService {
     suspend fun deleteItem(@Path("checklistId") checklistId: Int, @Path("id") itemId: Int): BaseResponse<Unit>
 
     @PUT("checklist/{checklistId}/item/rename/{id}")
-    suspend fun renameItem(@Path("checklistId") checklistId: Int, @Path("id") itemId: Int, @Body newName: ChecklistRequest): BaseResponse<Unit>
+    suspend fun renameItem(@Path("checklistId") checklistId: Int, @Path("id") itemId: Int, @Body newName: ChecklistItemRequest): BaseResponse<Unit>
 }
