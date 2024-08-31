@@ -1,6 +1,7 @@
 package com.kylix.checklistapp.screens.checklist.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,12 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kylix.checklistapp.data.api.response.ChecklistResponse
 import com.kylix.checklistapp.ui.theme.Black
+import com.kylix.checklistapp.ui.theme.DeepBlue
 import com.kylix.checklistapp.ui.theme.DeepOrange
 import com.kylix.checklistapp.ui.theme.LightBlue
 
@@ -32,12 +35,14 @@ fun ChecklistItem(
     modifier: Modifier = Modifier,
     checklist: ChecklistResponse,
     onDeleteChecklist: (Int) -> Unit = {},
+    onSelectItem: (Int) -> Unit = {}
 ) {
     Surface(
         modifier = modifier
             .padding(horizontal = 24.dp, vertical = 6.dp)
             .fillMaxWidth()
-            .shadow(2.dp, RoundedCornerShape(8.dp)),
+            .shadow(2.dp, RoundedCornerShape(8.dp))
+            .clickable { onSelectItem(checklist.id) },
         color = White
     ) {
         Row(
@@ -57,7 +62,7 @@ fun ChecklistItem(
                     text = "Status: ${if (checklist.checklistCompletionStatus) "Done" else "Not Done"}",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = LightBlue
+                    color = if (checklist.checklistCompletionStatus) DeepBlue else Red
                 )
             }
 

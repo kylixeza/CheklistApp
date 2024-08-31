@@ -3,13 +3,14 @@ package com.kylix.checklistapp.screens.checklist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kylix.checklistapp.data.api.ChecklistApiService
+import com.kylix.checklistapp.data.api.ChecklistItemApiService
 import com.kylix.checklistapp.data.api.response.ChecklistResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ChecklistViewModel(
-    private val checklistApiService: ChecklistApiService
+    private val checklistApiService: ChecklistApiService,
 ): ViewModel() {
 
     private val _checklists = MutableStateFlow(emptyList<ChecklistResponse>())

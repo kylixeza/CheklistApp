@@ -1,13 +1,16 @@
 package com.kylix.checklistapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.kylix.checklistapp.screens.add_checklist.AddChecklistScreen
 import com.kylix.checklistapp.screens.auth.login.LoginScreen
 import com.kylix.checklistapp.screens.auth.register.RegisterScreen
 import com.kylix.checklistapp.screens.checklist.ChecklistScreen
+import com.kylix.checklistapp.screens.checklist_item.ChecklistItemScreen
 
 @Composable
 fun NavGraph() {
@@ -40,8 +43,11 @@ fun NavGraph() {
         }
         composable(ScreenNavigation.Checklist.route) {
             ChecklistScreen(
-                onAddTask = {
+                onAddChecklist = {
                     navController.navigate(ScreenNavigation.AddChecklist.route)
+                },
+                onSelectItem = {
+                    navController.navigate(ScreenNavigation.ChecklistItem.passChecklistId(it))
                 }
             )
         }
@@ -52,6 +58,19 @@ fun NavGraph() {
                 },
                 onBack = {
                     navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            ScreenNavigation.ChecklistItem.route,
+            arguments = listOf(navArgument(ARG_CHECKLIST_ID) { type = NavType.IntType })
+        ) {
+            val checklistId = it.arguments?.getInt(ARG_CHECKLIST_ID) ?: 0
+            ChecklistItemScreen(
+                checklistId = checklistId,
+                onAddChecklistItem = {
+                    navController.navigate(ScreenNavigation.AddChecklistItem(checklistId).route)
                 }
             )
         }

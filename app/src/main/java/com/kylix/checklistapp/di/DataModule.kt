@@ -2,6 +2,7 @@ package com.kylix.checklistapp.di
 
 import com.kylix.checklistapp.data.api.AuthApiService
 import com.kylix.checklistapp.data.api.ChecklistApiService
+import com.kylix.checklistapp.data.api.ChecklistItemApiService
 import com.kylix.checklistapp.data.api.TokenInterceptor
 import com.kylix.checklistapp.data.local.ChecklistDatastore
 import okhttp3.OkHttpClient
@@ -47,6 +48,7 @@ val networkModule = module {
 
     single { get<Retrofit>().create(AuthApiService::class.java) }
     single { get<Retrofit>().create(ChecklistApiService::class.java) }
+    single { get<Retrofit>().create(ChecklistItemApiService::class.java) }
 }
 
 val datastoreModule = module {
