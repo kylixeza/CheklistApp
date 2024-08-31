@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.add_checklist_item
+package com.kylix.checklistapp.screens.checklist_item.add_checklist_item
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,7 +36,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kylix.checklistapp.screens.add_checklist.AddChecklistViewModel
+import com.kylix.checklistapp.screens.checklist.add_checklist.AddChecklistViewModel
 import com.kylix.checklistapp.ui.theme.DeepBlue
 import org.koin.androidx.compose.koinViewModel
 

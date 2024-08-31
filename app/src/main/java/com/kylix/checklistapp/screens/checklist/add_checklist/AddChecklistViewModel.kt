@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.add_checklist
+package com.kylix.checklistapp.screens.checklist.add_checklist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

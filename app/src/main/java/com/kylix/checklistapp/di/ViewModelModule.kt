@@ -1,7 +1,7 @@
 package com.kylix.checklistapp.di
 
-import com.kylix.checklistapp.screens.add_checklist.AddChecklistViewModel
-import com.kylix.checklistapp.screens.add_checklist_item.AddChecklistItemViewModel
+import com.kylix.checklistapp.screens.checklist.add_checklist.AddChecklistViewModel
+import com.kylix.checklistapp.screens.checklist_item.add_checklist_item.AddChecklistItemViewModel
 import com.kylix.checklistapp.screens.auth.login.LoginViewModel
 import com.kylix.checklistapp.screens.auth.register.RegisterViewModel
 import com.kylix.checklistapp.screens.checklist.ChecklistViewModel

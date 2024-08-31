@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.kylix.checklistapp.screens.add_checklist.AddChecklistScreen
-import com.kylix.checklistapp.screens.add_checklist_item.AddChecklistItemScreen
+import com.kylix.checklistapp.screens.checklist.add_checklist.AddChecklistScreen
+import com.kylix.checklistapp.screens.checklist_item.add_checklist_item.AddChecklistItemScreen
 import com.kylix.checklistapp.screens.auth.login.LoginScreen
 import com.kylix.checklistapp.screens.auth.register.RegisterScreen
 import com.kylix.checklistapp.screens.checklist.ChecklistScreen

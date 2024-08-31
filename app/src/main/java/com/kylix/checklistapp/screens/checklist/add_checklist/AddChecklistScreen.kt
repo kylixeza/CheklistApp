@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.add_checklist
+package com.kylix.checklistapp.screens.checklist.add_checklist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
