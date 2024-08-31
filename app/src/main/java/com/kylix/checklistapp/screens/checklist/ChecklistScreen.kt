@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.home
+package com.kylix.checklistapp.screens.checklist
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,8 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -32,14 +30,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import com.kylix.checklistapp.screens.home.components.ChecklistItem
+import com.kylix.checklistapp.screens.checklist.components.ChecklistItem
 import com.kylix.checklistapp.ui.theme.DeepBlue
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(
+fun ChecklistScreen(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = koinViewModel(),
+    viewModel: ChecklistViewModel = koinViewModel(),
     onAddTask: () -> Unit = {}
 ) {
     val checklist = viewModel.checklists.collectAsState().value

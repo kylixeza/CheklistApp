@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.home
+package com.kylix.checklistapp.screens.checklist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class ChecklistViewModel(
     private val checklistApiService: ChecklistApiService
 ): ViewModel() {
 

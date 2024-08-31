@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.kylix.checklistapp.screens.add_checklist.AddChecklistScreen
 import com.kylix.checklistapp.screens.auth.login.LoginScreen
 import com.kylix.checklistapp.screens.auth.register.RegisterScreen
-import com.kylix.checklistapp.screens.home.HomeScreen
+import com.kylix.checklistapp.screens.checklist.ChecklistScreen
 
 @Composable
 fun NavGraph() {
@@ -23,7 +23,7 @@ fun NavGraph() {
                     navController.navigate(ScreenNavigation.Register.route)
                 },
                 onNavigateToHome = {
-                    navController.navigate(ScreenNavigation.Home.route) {
+                    navController.navigate(ScreenNavigation.Checklist.route) {
                         popUpTo(ScreenNavigation.Login.route) {
                             inclusive = true
                         }
@@ -38,8 +38,8 @@ fun NavGraph() {
                 }
             )
         }
-        composable(ScreenNavigation.Home.route) {
-            HomeScreen(
+        composable(ScreenNavigation.Checklist.route) {
+            ChecklistScreen(
                 onAddTask = {
                     navController.navigate(ScreenNavigation.AddChecklist.route)
                 }
