@@ -1,4 +1,4 @@
-package com.kylix.checklistapp.screens.add_checklist
+package com.kylix.checklistapp.screens.add_checklist_item
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,17 +36,19 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kylix.checklistapp.screens.add_checklist.AddChecklistViewModel
 import com.kylix.checklistapp.ui.theme.DeepBlue
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddChecklistScreen(
-    viewModel: AddChecklistViewModel = koinViewModel(),
+fun AddChecklistItemScreen(
+    checklistId: Int,
+    viewModel: AddChecklistItemViewModel = koinViewModel(),
     onBack: () -> Unit = {},
 ) {
 
-    val isSuccess by viewModel.isSaveSuccess.collectAsState()
+    val isSuccess by viewModel.isSuccess.collectAsState()
 
     var name by remember { mutableStateOf("") }
 
@@ -70,7 +72,7 @@ fun AddChecklistScreen(
                         ) {
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Add New Checklist",
+                                text = "Add New Checklist Item",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 fontFamily = FontFamily.Default
@@ -103,13 +105,13 @@ fun AddChecklistScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = "Create a new checklist",
+                text = "Create a new checklist item",
             )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
-                label = { Text("Checklist Name") },
+                label = { Text("Checklist Item Name") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -120,7 +122,7 @@ fun AddChecklistScreen(
                     .fillMaxWidth()
                     .padding(start = 8.dp),
                 onClick = {
-                    viewModel.saveChecklist(name)
+                    viewModel.saveItem(checklistId, name)
                 },
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(
@@ -132,5 +134,4 @@ fun AddChecklistScreen(
             }
         }
     }
-
 }
